@@ -194,7 +194,6 @@ func TestAlertingRule(t *testing.T) {
 func TestForStateAddSamples(t *testing.T) {
 	for _, evalDelay := range []time.Duration{0, time.Minute} {
 		t.Run(fmt.Sprintf("evalDelay %s", evalDelay.String()), func(t *testing.T) {
-
 			storage := promql.LoadedStorage(t, `
 		load 5m
 			http_requests{job="app-server", instance="0", group="canary", severity="overwrite-me"}	75 85  95 105 105  95  85
@@ -530,7 +529,6 @@ func TestForStateRestore(t *testing.T) {
 
 func TestStaleness(t *testing.T) {
 	for _, evalDelay := range []time.Duration{0, time.Minute} {
-
 		st := teststorage.New(t)
 		defer st.Close()
 		engineOpts := promql.EngineOpts{
